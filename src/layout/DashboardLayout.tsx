@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router";
-import Header from "../component/common/header";
 
 const { Content } = Layout;
 
@@ -50,7 +49,7 @@ const DashboardLayout: React.FC = () => {
     >
       <Content
         style={{
-          height: "calc(100% - 64px)", // متناسب با ارتفاع Header
+          height: "calc(100% - 64px)",
           overflow: "hidden",
           overflowX: "hidden",
         }}

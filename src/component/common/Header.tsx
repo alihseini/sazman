@@ -8,17 +8,12 @@ const Header: React.FC = () => {
   return (
     <header className="bg-[#00375c] fixed top-0 left-0 right-0 z-50">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-5 px-6 relative">
-        {/* متن اول فقط از lg به بالا */}
         <p className="hidden lg:block text-white font-semibold text-base whitespace-nowrap">
           درگاه سامانه‌های یکپارچه سازمان بازرسی کل کشور
         </p>
-
-        {/* متن دوم فقط زیر lg */}
         <p className="block lg:hidden text-white font-semibold text-base whitespace-nowrap">
           درگاه سامانه‌های یکپارچه
         </p>
-
-        {/* دکمه‌ها فقط از sm به بالا */}
         <div className="hidden sm:flex gap-4">
           <Link
             to="/"
@@ -33,8 +28,6 @@ const Header: React.FC = () => {
             ورود به حساب
           </Link>
         </div>
-
-        {/* آیکون منو فقط زیر sm */}
         <div className="sm:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
             {menuOpen ? 
@@ -43,7 +36,6 @@ const Header: React.FC = () => {
               <Icon icon="solar:user-bold" width="24" height="24" />
             )}
           </button>
-
           {menuOpen && (
             <div className="absolute top-full left-6 mt-2 bg-white rounded-lg shadow-md py-2 px-4 flex flex-col gap-2 z-50">
               <Link
