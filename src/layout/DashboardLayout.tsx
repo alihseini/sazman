@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router";
+import Header from "../component/common/header";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const getGreeting = () => {
   const hour = new Date().getHours();
@@ -13,7 +14,9 @@ const getGreeting = () => {
 };
 
 const DashboardLayout: React.FC = () => {
-  const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth >= 1024);
+  const [isDesktop, setIsDesktop] = useState<boolean>(
+    window.innerWidth >= 1024
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,26 +33,29 @@ const DashboardLayout: React.FC = () => {
   });
 
   if (!isDesktop) {
-    // موبایل: فقط فول اسکرین Outlet
     return (
-      <div className="w-screen h-screen overflow-auto">
-        <Outlet />
-      </div>
+        <div
+          className="w-screen h-screen overflow-auto"
+          style={{ overflowX: "hidden" }}
+        >
+          <Outlet />
+        </div>
     );
   }
 
-  // دسکتاپ: لایوت کامل
   return (
-    <Layout className="h-screen overflow-hidden flex flex-col">
-      <Header
+    <Layout
+      className="h-screen overflow-hidden flex flex-col"
+      style={{ overflowX: "hidden" }}
+    >
+      <Content
         style={{
-          height: 64,
-          padding: 0,
-          background: "#00375c",
+          height: "calc(100% - 64px)", // متناسب با ارتفاع Header
+          overflow: "hidden",
+          overflowX: "hidden",
         }}
-      />
-      <Content style={{ height: "calc(100% - 64px)", overflow: "hidden" }}>
-        <div className="relative w-full h-full">
+      >
+        <div className="relative w-full h-full" style={{ overflowX: "hidden" }}>
           <div className="h-[40%] bg-[#00375c]" />
           <div
             className="h-[60%] bg-cover bg-center"
@@ -58,24 +64,40 @@ const DashboardLayout: React.FC = () => {
                 "url('https://136.bazresi.ir/dargah/assets/img/bg.8a1a09b9.svg')",
             }}
           />
-          <div className="absolute inset-0 flex justify-center items-center p-4">
-            <div className="bg-white shadow-lg rounded-xl w-full max-w-screen-lg h-[80vh] flex flex-col lg:flex-row overflow-hidden">
-              {/* محتوای اصلی */}
-              <div className="w-full lg:w-[80%] bg-white flex items-center justify-center rounded-t-xl lg:rounded-tr-xl lg:rounded-r-xl p-4 overflow-auto">
-                <Outlet />
+          <div
+            className="absolute inset-0 flex justify-center items-center p-4"
+            style={{ overflowX: "hidden" }}
+          >
+            <div
+              className="bg-white shadow-lg rounded-xl w-full max-w-screen-lg h-[80vh] flex flex-col lg:flex-row overflow-hidden"
+              style={{ overflowX: "hidden" }}
+            >
+              <div
+                className="w-full lg:w-[80%] bg-white flex flex-col rounded-t-xl lg:rounded-tr-xl lg:rounded-r-xl p-4"
+                style={{ overflowX: "hidden" }}
+              >
+                <div
+                  className="flex-grow overflow-auto"
+                  style={{ overflowX: "hidden" }}
+                >
+                  <Outlet />
+                </div>
               </div>
 
-              {/* سایدبار */}
               <div
                 className="relative w-full lg:w-[20%] h-48 lg:h-full overflow-hidden flex flex-col justify-end pb-4 px-3 text-white rounded-b-xl lg:rounded-b-none lg:rounded-l-xl mt-2 lg:mt-0"
                 style={{
                   backgroundImage:
                     "url('https://136.bazresi.ir/dargah/assets/img/bg2.67b95ed1.jpg')",
                   filter: "brightness(0.5)",
+                  overflowX: "hidden",
                 }}
               >
                 <div className="absolute inset-0 bg-black opacity-40" />
-                <div className="relative flex justify-center items-center flex-grow">
+                <div
+                  className="relative flex justify-center items-center flex-grow"
+                  style={{ overflowX: "hidden" }}
+                >
                   <img
                     src="https://136.bazresi.ir/dargah/assets/logos/logo-g.svg"
                     alt="Logo"
@@ -83,7 +105,10 @@ const DashboardLayout: React.FC = () => {
                     style={{ filter: "brightness(1)" }}
                   />
                 </div>
-                <div className="relative mt-2 text-center">
+                <div
+                  className="relative mt-2 text-center"
+                  style={{ overflowX: "hidden" }}
+                >
                   <p className="text-base font-semibold">{getGreeting()}</p>
                   <p className="mb-1 text-sm">{today}</p>
                 </div>
