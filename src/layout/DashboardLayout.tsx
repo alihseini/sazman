@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router";
+import { today } from "../utils/getToday";
 
 const { Content } = Layout;
 
@@ -25,20 +26,14 @@ const DashboardLayout: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const today = new Date().toLocaleDateString("fa-IR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
   if (!isDesktop) {
     return (
-        <div
-          className="w-screen h-screen overflow-auto"
-          style={{ overflowX: "hidden" }}
-        >
-          <Outlet />
-        </div>
+      <div
+        className="w-screen h-screen overflow-auto"
+        style={{ overflowX: "hidden" }}
+      >
+        <Outlet />
+      </div>
     );
   }
 
@@ -84,11 +79,11 @@ const DashboardLayout: React.FC = () => {
               </div>
 
               <div
-                className="relative w-full lg:w-[20%] h-48 lg:h-full overflow-hidden flex flex-col justify-end pb-4 px-3 text-white rounded-b-xl lg:rounded-b-none lg:rounded-l-xl mt-2 lg:mt-0"
+                className="relative  w-full lg:w-[20%] h-48 lg:h-full overflow-hidden flex flex-col justify-end pb-4 px-3 text-white rounded-b-xl lg:rounded-b-none lg:rounded-l-xl mt-2 lg:mt-0"
                 style={{
                   backgroundImage:
                     "url('https://136.bazresi.ir/dargah/assets/img/bg2.67b95ed1.jpg')",
-                  filter: "brightness(0.5)",
+                  filter: "brightness(0.7)",
                   overflowX: "hidden",
                 }}
               >
