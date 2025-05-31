@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-[#00375c] fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between py-5 px-6 relative">
+      <div className="max-w-[1100px] mx-auto flex items-center justify-between py-5 px-6 relative">
         <p className="hidden lg:block text-white font-semibold text-base whitespace-nowrap">
           درگاه سامانه‌های یکپارچه سازمان بازرسی کل کشور
         </p>
@@ -39,14 +39,14 @@ const Header: React.FC = () => {
           {menuOpen && (
             <div className="absolute top-full left-6 mt-2 bg-white rounded-lg shadow-md py-2 px-4 flex flex-col gap-2 z-50">
               <Link
-                to="/"
+                to="/register"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl"
                 onClick={() => setMenuOpen(false)}
               >
                 ثبت نام شهروند
               </Link>
               <Link
-                to="/"
+                to="/login"
                 className="bg-[#17A2B8] hover:bg-cyan-600 text-white px-4 py-2 rounded-xl"
                 onClick={() => setMenuOpen(false)}
               >

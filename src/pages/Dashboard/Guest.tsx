@@ -77,9 +77,8 @@ const Guest: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="px-4 py-6 relative min-h-screen">
-        {/* دکمه تغییر حالت نمایش - به صورت شناور */}
-        <div className="fixed bottom-6 right-6 z-50">
+      <div className="px-4 py-6 relative mt-40">
+        <div className="absolute left-0 -top-15 z-50">
           <Button
             onClick={cycleViewMode}
             shape="circle"
@@ -90,7 +89,6 @@ const Guest: React.FC = () => {
           </Button>
         </div>
 
-        {/* محتوای اصلی */}
         {viewMode === "table" ? (
           <Table
             dataSource={filteredItems}
