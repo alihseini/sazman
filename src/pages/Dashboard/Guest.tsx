@@ -1,8 +1,7 @@
-// Guest.tsx
 import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Table } from "antd";
-import Header from "../../component/common/header";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import Header from "../../component/common/Header";
 
 interface Item {
   id: string;
@@ -78,13 +77,20 @@ const Guest: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="px-4 py-6">
-        <div className="mb-4 text-center">
-          <Button onClick={cycleViewMode} shape="circle" size="large">
+      <div className="px-4 py-6 relative min-h-screen">
+        {/* دکمه تغییر حالت نمایش - به صورت شناور */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <Button
+            onClick={cycleViewMode}
+            shape="circle"
+            size="large"
+            type="primary"
+          >
             <Icon icon={getIcon(viewMode)} width="24" height="24" />
           </Button>
         </div>
 
+        {/* محتوای اصلی */}
         {viewMode === "table" ? (
           <Table
             dataSource={filteredItems}
@@ -123,7 +129,13 @@ const Guest: React.FC = () => {
 
               return (
                 <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
-                  {isMobileOnly ? <a href="tel:136" className="!text-black">{content}</a> : content}
+                  {isMobileOnly ? (
+                    <a href="tel:136" className="!text-black">
+                      {content}
+                    </a>
+                  ) : (
+                    content
+                  )}
                 </Col>
               );
             })}
