@@ -22,7 +22,7 @@ const Guest: React.FC = () => {
   const getIcon = (mode: ViewMode) => {
     switch (mode) {
       case "normal":
-        return "mingcute:windows-line";
+        return "mi:table";
       case "compact":
         return "mingcute:grid-fill";
       case "table":
