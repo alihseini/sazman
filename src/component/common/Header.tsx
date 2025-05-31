@@ -16,13 +16,13 @@ const Header: React.FC = () => {
         </p>
         <div className="hidden sm:flex gap-4">
           <Link
-            to="/"
+            to="/register"
             className="!bg-blue-600 hover:bg-blue-700 transition !text-white px-4 py-2 rounded-xl"
           >
             ثبت نام شهروند
           </Link>
           <Link
-            to="/"
+            to="/login"
             className="!bg-[#17A2B8] hover:bg-cyan-600 transition !text-white px-4 py-2 rounded-xl"
           >
             ورود به حساب
