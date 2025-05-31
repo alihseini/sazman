@@ -3,6 +3,14 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { Link } from "react-router";
 
+const onFinish = (values: any) => {
+  console.log("Success:", values);
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  console.log("Failed:", errorInfo);
+};
+
 const Login: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row h-150">
@@ -22,8 +30,8 @@ const Login: React.FC = () => {
           name="basic"
           layout="vertical"
           initialValues={{ remember: true }}
-          onFinish={(values) => console.log("Success:", values)}
-          onFinishFailed={(errorInfo) => console.log("Failed:", errorInfo)}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item
@@ -76,8 +84,8 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between mt-5 text-sm">
-            <Link to="">فراموشی رمز عبور</Link>
-            <Link to="">تغییر شماره همراه</Link>
+            <Link to="/forgetpass">فراموشی رمز عبور</Link>
+            <Link to="/changenumber">تغییر شماره همراه</Link>
           </div>
 
           <div className="flex items-center my-6">

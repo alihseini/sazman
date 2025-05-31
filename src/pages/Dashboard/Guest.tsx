@@ -95,12 +95,14 @@ const Guest: React.FC = () => {
           />
         ) : (
           <Row gutter={[16, 16]} justify="center">
-            {filteredItems.map((item) => (
-              <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
+            {filteredItems.map((item) => {
+              const isMobileOnly = item.show === "mobile";
+
+              const content = (
                 <div
                   className={`w-full ${
                     viewMode === "compact" ? "h-28" : "h-48"
-                  } bg-gray-100 rounded-xl shadow-md flex flex-col items-center justify-center hover:shadow-lg transition`}
+                  } bg-gray-100 rounded-xl shadow-md flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer`}
                 >
                   <img
                     src={item.image}
@@ -117,8 +119,14 @@ const Guest: React.FC = () => {
                     {item.title}
                   </p>
                 </div>
-              </Col>
-            ))}
+              );
+
+              return (
+                <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
+                  {isMobileOnly ? <a href="tel:136" className="!text-black">{content}</a> : content}
+                </Col>
+              );
+            })}
           </Row>
         )}
       </div>
