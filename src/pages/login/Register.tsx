@@ -37,7 +37,6 @@ const Register: React.FC = () => {
         autoComplete="off"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* فیلدها */}
           <Form.Item
             label="شماره موبایل"
             name="mobile"
@@ -46,7 +45,7 @@ const Register: React.FC = () => {
             ]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:phone-line"
                 className="absolute top-2 right-2 text-gray-400"
@@ -62,7 +61,7 @@ const Register: React.FC = () => {
             rules={[{ required: true, message: "لطفا کد ملی را وارد کنید" }]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:idcard-line"
                 className="absolute top-2 right-2 text-gray-400"
@@ -78,7 +77,7 @@ const Register: React.FC = () => {
             rules={[{ required: true, message: "لطفا نام را وارد کنید" }]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:user-2-line"
                 className="absolute top-2 right-2 text-gray-400"
@@ -96,7 +95,7 @@ const Register: React.FC = () => {
             ]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:user-2-line"
                 className="absolute top-2 right-2 text-gray-400"
@@ -112,7 +111,7 @@ const Register: React.FC = () => {
             rules={[{ required: true, message: "لطفا نام پدر را وارد کنید" }]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:user-2-line"
                 className="absolute top-2 right-2 text-gray-400"
@@ -129,11 +128,13 @@ const Register: React.FC = () => {
               { required: true, message: "لطفا تاریخ تولد را وارد کنید" },
             ]}
           >
-            <DatePicker
-              className="w-full rounded-2xl"
-              format="YYYY/MM/DD"
-              placeholder="تاریخ تولد"
-            />
+            <div className="p-1 bg-white relative rounded-2xl">
+              <DatePicker
+                className="w-full rounded-2xl !border-none"
+                format="YYYY/MM/DD"
+                placeholder="تاریخ تولد"
+              />
+            </div>
           </Form.Item>
 
           <Form.Item

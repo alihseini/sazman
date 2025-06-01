@@ -41,7 +41,7 @@ const Login: React.FC = () => {
             className="!mt-5"
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none pr-10" />
+              <Input className="!border-none !pr-8" />
               <Icon
                 icon="mingcute:user-2-line"
                 className="!absolute !top-2 right-2 text-gray-400"
