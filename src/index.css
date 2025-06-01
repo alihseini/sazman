@@ -1,2 +1,6 @@
 @import "tailwindcss";
-@import "../public/assets/fonts/fontFace.css"
+@import "../public/assets/fonts/fontFace.css";
+
+* {
+  font-family: "IRANYekanXFaNum";
+}
