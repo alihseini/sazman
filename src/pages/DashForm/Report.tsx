@@ -152,12 +152,12 @@ const Report: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-            <Button danger onClick={() => navigate(-1)}>
-              انصراف
-            </Button>
-            <Button type="primary" htmlType="submit" className="mr-5">
-              ارسال
-            </Button>
+          <Button danger onClick={() => navigate(-1)}>
+            انصراف
+          </Button>
+          <Button type="primary" htmlType="submit" className="mr-5">
+            ارسال
+          </Button>
         </Form.Item>
       </Form>
     </>

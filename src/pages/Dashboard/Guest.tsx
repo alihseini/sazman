@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Table } from "antd";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import Header from "../../component/common/Header";
+import { Link } from "react-router";
 
 interface Item {
   id: string;
@@ -100,40 +101,35 @@ const Guest: React.FC = () => {
         ) : (
           <Row gutter={[16, 16]} justify="center">
             {filteredItems.map((item) => {
-              const isMobileOnly = item.show === "mobile";
-
-              const content = (
-                <div
-                  className={`w-full ${
-                    viewMode === "compact" ? "h-28" : "h-48"
-                  } bg-gray-100 rounded-xl shadow-md flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer`}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className={`${
-                      viewMode === "compact" ? "w-8 h-8 mb-2" : "w-12 h-12 mb-4"
-                    }`}
-                  />
-                  <p
-                    className={`text-center ${
-                      viewMode === "compact" ? "text-xs" : "text-sm"
-                    } font-medium`}
-                  >
-                    {item.title}
-                  </p>
-                </div>
-              );
-
               return (
                 <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
-                  {isMobileOnly ? (
-                    <a href="tel:136" className="!text-black">
-                      {content}
-                    </a>
-                  ) : (
-                    content
-                  )}
+                  <Link
+                    to={item.link}
+                    className="block !text-black no-underline"
+                  >
+                    <div
+                      className={`w-full ${
+                        viewMode === "compact" ? "h-28" : "h-48"
+                      } bg-gray-100 rounded-xl shadow-md flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer`}
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className={`${
+                          viewMode === "compact"
+                            ? "w-8 h-8 mb-2"
+                            : "w-12 h-12 mb-4"
+                        }`}
+                      />
+                      <p
+                        className={`text-center ${
+                          viewMode === "compact" ? "text-xs" : "text-sm"
+                        } font-medium`}
+                      >
+                        {item.title}
+                      </p>
+                    </div>
+                  </Link>
                 </Col>
               );
             })}

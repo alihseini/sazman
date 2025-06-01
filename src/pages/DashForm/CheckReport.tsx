@@ -22,6 +22,7 @@ const CheckReport: React.FC = () => {
 
   return (
     <>
+      <p className="mb-10">مشاهده گزارش وضعیت فساد ناشناس</p>
       <Form
         name="nest-messages"
         onFinish={onFinish}
@@ -30,7 +31,7 @@ const CheckReport: React.FC = () => {
         layout="vertical"
       >
         <Form.Item
-          label="شماره همراه"
+          label="شماره رهگیری"
           name=""
           rules={[
             { required: true, message: "لطفا شماره همراه خود را وارد کنید" },
