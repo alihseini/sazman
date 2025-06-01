@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input, DatePicker } from "antd";
 import React from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getFormData } from "../../utils/helper";
 
 const onFinish = (values: any) => {
@@ -15,19 +15,17 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 const Register: React.FC = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 relative">
       <div className="mb-4">
-        <Button
-          type="link"
-          onClick={() => navigate(-1)}
+        <Link
+          to={"/"}
           className="flex items-center gap-2 text-primary-600 !absolute !top-0 left-0"
         >
           <Icon icon="ic:baseline-arrow-back" width="20" />
           بازگشت
-        </Button>
+        </Link>
       </div>
 
       <p className="text-center text-2xl mb-6 font-semibold">ثبت نام</p>

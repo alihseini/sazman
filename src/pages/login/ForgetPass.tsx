@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input } from "antd";
 import React from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getFormData } from "../../utils/helper";
 
 const onFinish = (values: any) => {
@@ -15,18 +15,16 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 const ForgetPass: React.FC = () => {
-  const navigate = useNavigate();
   return (
     <div className="relative flex flex-col lg:flex-row h-100">
       <div className="mb-4">
-        <Button
-          type="link"
-          onClick={() => navigate(-1)}
+        <Link
+          to={"/login"}
           className="flex items-center gap-2 text-primary-600 !absolute !top-0 left-0"
         >
           <Icon icon="ic:baseline-arrow-back" width="20" />
           بازگشت
-        </Button>
+        </Link>
       </div>
       <div className="flex-1 w-full lg:w-[55%] p-6">
         <p className="w-full text-center text-2xl">فراموشی رمز عبور</p>
