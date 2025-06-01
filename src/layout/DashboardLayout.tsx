@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router";
-import { today } from "../utils/getToday";
+import { today } from "../utils/helper";
 
 const { Content } = Layout;
 

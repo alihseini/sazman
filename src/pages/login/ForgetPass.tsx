@@ -2,9 +2,12 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
+import { getFormData } from "../../utils/helper";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
+  const loginData = getFormData(values);
+  console.log(loginData);
 };
 
 const onFinishFailed = (errorInfo: any) => {
@@ -37,7 +40,7 @@ const ForgetPass: React.FC = () => {
         >
           <Form.Item
             label="کد ملی"
-            name="nationalCode"
+            name="UserName"
             rules={[{ required: true, message: "لطفا کد ملی را وارد کنید" }]}
             className="!mt-5"
           >
@@ -54,7 +57,7 @@ const ForgetPass: React.FC = () => {
 
           <Form.Item
             label="شماره همراه"
-            name=""
+            name="Mobile"
             rules={[
               { required: true, message: "لطفا شماره همراه خود را وارد کنید" },
             ]}
@@ -68,7 +71,6 @@ const ForgetPass: React.FC = () => {
             label="کد امنیتی"
             name="captcha"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
-            
           >
             <div className="p-1 bg-white relative rounded-2xl w-50">
               <Input className="!border-none" />

@@ -2,9 +2,12 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input, DatePicker } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
+import { getFormData } from "../../utils/helper";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
+  const loginData = getFormData(values);
+  console.log(loginData);
 };
 
 const onFinishFailed = (errorInfo: any) => {
