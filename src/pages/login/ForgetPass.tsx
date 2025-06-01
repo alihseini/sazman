@@ -68,6 +68,7 @@ const ForgetPass: React.FC = () => {
             label="کد امنیتی"
             name="captcha"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
+            
           >
             <div className="p-1 bg-white relative rounded-2xl w-50">
               <Input className="!border-none" />

@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Form, Input, Select, Upload, message } from "antd";
+import { Button, Form, Input, Select, Upload, message, Space } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router";
 
 const onFinish = (values: any) => {
   console.log("Form values:", values);
@@ -18,9 +19,11 @@ const validateMessages = {
 };
 
 const Report: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <p>فرم ثبت گزارش فساد ناشناس</p>
+      <p className="mb-10">فرم ثبت گزارش فساد ناشناس</p>
       <Form
         name="nest-messages"
         onFinish={onFinish}
@@ -149,9 +152,12 @@ const Report: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            ارسال
-          </Button>
+            <Button danger onClick={() => navigate(-1)}>
+              انصراف
+            </Button>
+            <Button type="primary" htmlType="submit" className="mr-5">
+              ارسال
+            </Button>
         </Form.Item>
       </Form>
     </>
