@@ -37,7 +37,7 @@ const CheckReport: React.FC = () => {
             { required: true, message: "لطفا شماره همراه خود را وارد کنید" },
           ]}
         >
-          <div className="p-1 bg-gray-300 relative rounded-2xl">
+          <div className="p-1 bg-gray-200 relative rounded-2xl">
             <Input className="!border-none" />
           </div>
         </Form.Item>
@@ -47,7 +47,7 @@ const CheckReport: React.FC = () => {
           name="captcha"
           rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
         >
-          <div className="p-1 bg-gray-300 relative rounded-2xl w-50">
+          <div className="p-1 bg-gray-200 relative rounded-2xl w-50">
             <Input className="!border-none" />
           </div>
         </Form.Item>

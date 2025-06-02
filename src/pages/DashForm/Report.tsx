@@ -1,5 +1,13 @@
-import React from "react";
-import { Button, Form, Input, Select, Upload, message, Space } from "antd";
+import React, { useState } from "react";
+import {
+  Button,
+  Form,
+  Input,
+  Select,
+  Upload,
+  message,
+  Progress,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router";
 
@@ -18,8 +26,11 @@ const validateMessages = {
   },
 };
 
+const MAX_DESCRIPTION_LENGTH = 4000;
+
 const Report: React.FC = () => {
   const navigate = useNavigate();
+  const [descriptionLength, setDescriptionLength] = useState(0);
 
   return (
     <>
@@ -121,12 +132,39 @@ const Report: React.FC = () => {
           />
         </Form.Item>
 
+        {/* شرح با محدودیت ۴۰۰۰ کاراکتر و نوار پیشرفت */}
         <Form.Item
           name="description"
           label="شرح"
-          rules={[{ required: true, message: "لطفا شرح دهید" }]}
+          rules={[
+            { required: true, message: "لطفا شرح دهید" },
+            { max: MAX_DESCRIPTION_LENGTH, message: "حداکثر ۴۰۰۰ کاراکتر مجاز است" },
+          ]}
         >
-          <Input.TextArea rows={4} />
+          <>
+            <Input.TextArea
+              rows={4}
+              maxLength={MAX_DESCRIPTION_LENGTH}
+              showCount
+              onChange={(e) => setDescriptionLength(e.target.value.length)}
+              placeholder="شرح فساد را وارد کنید (حداکثر ۴۰۰۰ حرف)"
+            />
+            <Progress
+              percent={Math.round(
+                (descriptionLength / MAX_DESCRIPTION_LENGTH) * 100
+              )}
+              showInfo={false}
+              size="small"
+              strokeColor={
+                descriptionLength < 3000
+                  ? "#1890ff"
+                  : descriptionLength < 3900
+                  ? "#faad14"
+                  : "#f5222d"
+              }
+              style={{ marginTop: 10 }}
+            />
+          </>
         </Form.Item>
 
         <Form.Item
@@ -149,6 +187,17 @@ const Report: React.FC = () => {
           >
             <Button icon={<UploadOutlined />}>انتخاب فایل</Button>
           </Upload>
+        </Form.Item>
+
+        <Form.Item
+          label="کد امنیتی"
+          name="captcha"
+          className="md:col-span-2"
+          rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
+        >
+          <div className="p-1 bg-gray-200 relative rounded-2xl w-full md:w-1/2">
+            <Input className="!border-none" />
+          </div>
         </Form.Item>
 
         <Form.Item>
