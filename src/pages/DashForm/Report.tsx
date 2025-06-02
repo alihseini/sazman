@@ -11,6 +11,7 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router";
+import Captcha from "../../component/common/Captcha";
 
 const { Step } = Steps;
 const MAX_DESCRIPTION_LENGTH = 4000;
@@ -203,21 +204,18 @@ const Report: React.FC = () => {
             </Form.Item>
           </>
         )}
-
-        {/* مرحله سوم */}
         {currentStep === 2 && (
           <Form.Item
             label="کد امنیتی"
             name="captcha"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
           >
+            <Captcha />
             <div className="p-1 bg-gray-200 relative rounded-2xl w-full md:w-1/2">
               <Input className="!border-none" />
             </div>
           </Form.Item>
         )}
-
-        {/* دکمه‌های کنترل */}
         <Form.Item className="mt-6">
           {currentStep > 0 && (
             <Button onClick={prev} className="ml-2">

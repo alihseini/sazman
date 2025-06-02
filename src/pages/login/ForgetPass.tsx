@@ -3,6 +3,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router";
 import { getFormData } from "../../utils/helper";
+import Captcha from "../../component/common/Captcha";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
@@ -16,7 +17,7 @@ const onFinishFailed = (errorInfo: any) => {
 
 const ForgetPass: React.FC = () => {
   return (
-    <div className="relative flex flex-col lg:flex-row h-100">
+    <div className="relative flex flex-col lg:flex-row h-110">
       <div className="mb-4">
         <Link
           to={"/login"}
@@ -70,6 +71,7 @@ const ForgetPass: React.FC = () => {
             name="captcha"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
           >
+            <Captcha />
             <div className="p-1 bg-white relative rounded-2xl w-50">
               <Input className="!border-none" />
             </div>

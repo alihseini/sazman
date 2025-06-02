@@ -1,6 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
+import Captcha from "../../component/common/Captcha";
 
 const onFinish = (values: any) => {
   console.log("Form values:", values);
@@ -47,6 +48,7 @@ const CheckReport: React.FC = () => {
           name="captcha"
           rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
         >
+          <Captcha />
           <div className="p-1 bg-gray-200 relative rounded-2xl w-50">
             <Input className="!border-none" />
           </div>

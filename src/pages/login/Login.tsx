@@ -3,6 +3,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { Link } from "react-router";
 import { getFormData } from "../../utils/helper";
+import Captcha from "../../component/common/Captcha";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
@@ -15,8 +16,9 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 const Login: React.FC = () => {
+
   return (
-    <div className="flex flex-col lg:flex-row h-150">
+    <div className="flex flex-col lg:flex-row h-160">
       <div className="hidden lg:flex text-[#00375c] w-full lg:w-[45%] flex-col items-center justify-center border-l border-dashed border-gray-300 p-6">
         <img
           src="https://136.bazresi.ir/dargah/assets/img/logo.e711fe7c.svg"
@@ -69,6 +71,7 @@ const Login: React.FC = () => {
             name="DNTCaptchaInputText"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
           >
+            <Captcha />
             <div className="p-1 bg-white relative rounded-2xl">
               <Input className="!border-none" />
             </div>

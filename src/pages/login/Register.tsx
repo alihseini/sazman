@@ -3,6 +3,7 @@ import { Button, Form, Input, DatePicker } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router";
 import { getFormData } from "../../utils/helper";
+import Captcha from "../../component/common/Captcha";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
@@ -15,7 +16,6 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 const Register: React.FC = () => {
-
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 relative">
       <div className="mb-4">
@@ -144,6 +144,7 @@ const Register: React.FC = () => {
             className="md:col-span-2"
             rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
           >
+            <Captcha />
             <div className="p-1 bg-white relative rounded-2xl w-full md:w-1/2">
               <Input className="!border-none" />
             </div>
