@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input, DatePicker } from "antd";
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { getFormData } from "../../utils/helper";
 import Captcha from "../../component/common/Captcha";
 
