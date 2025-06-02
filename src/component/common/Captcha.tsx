@@ -1,15 +1,20 @@
 import React from "react";
-import { useCaptcha } from "../../hooks/react-query/useCaptcha";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { getCaptcha } from "../../services/user";
+import { useQuery } from "@tanstack/react-query";
 
 const Captcha: React.FC = () => {
-  const { captcha, isLoading, refetchCaptcha } = useCaptcha();
+  const { data, isLoading } = useQuery({
+    queryKey: ["captcha"],
+    queryFn: getCaptcha,
+    refetchOnWindowFocus: false,
+  });
 
   if (isLoading) return <p>در حال بارگذاری کپچا...</p>;
   return (
     <div className="flex my-2 gap-2">
       <img
-        src={`data:image/png;base64,${captcha?.data?.dntCaptchaImage}`}
+        src={`data:image/png;base64,${data?.data?.dntCaptchaImage}`}
         alt="کپچا"
       />
       <button className="hover:cursor-pointer" onClick={() => refetchCaptcha()}>
