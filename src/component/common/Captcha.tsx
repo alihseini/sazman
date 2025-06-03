@@ -3,8 +3,14 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { getCaptcha } from "../../services/user";
 import { useQuery } from "@tanstack/react-query";
 
+interface CaptchaResponse {
+  data: {
+    dntCaptchaImage: string;
+  };
+}
+
 const Captcha: React.FC = () => {
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery<CaptchaResponse>({
     queryKey: ["captcha"],
     queryFn: getCaptcha,
     refetchOnWindowFocus: false,

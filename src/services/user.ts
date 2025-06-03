@@ -1,16 +1,22 @@
 import toast from "react-hot-toast";
 import api from "../utils/api";
 
-const getCaptcha = () => {
+interface CaptchaResponse {
+  data: {
+    dntCaptchaImage: string;
+  };
+}
+
+const getCaptcha = (): Promise<CaptchaResponse> => {
   return new Promise((resolve, reject) => {
     api
-      .get("v1/Authenticate/CreateExternalCaptcha")
+      .get<CaptchaResponse>("v1/Authenticate/CreateExternalCaptcha")
       .then((response) => {
-        resolve(response);
+        resolve(response.data);    
       })
       .catch((error) => {
+        toast.error(error.message || "خطا در دریافت کپچا");
         reject(error);
-        toast(error);
       });
   });
 };
