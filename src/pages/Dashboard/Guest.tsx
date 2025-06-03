@@ -3,6 +3,7 @@ import { Row, Col, Button, Table } from "antd";
 import { Icon } from "@iconify/react";
 import Header from "../../component/common/Header";
 import { Link, useNavigate } from "react-router";
+import type { ColumnsType } from "antd/es/table";
 
 interface Item {
   id: string;
@@ -62,7 +63,7 @@ const Guest: React.FC = () => {
     (item) => !(item.show === "mobile" && isDesktop)
   );
 
-  const columns = [
+  const columns: ColumnsType<Item> = [
     {
       title: "ردیف",
       key: "index",
@@ -78,7 +79,7 @@ const Guest: React.FC = () => {
       title: "عنوان",
       dataIndex: "title",
       key: "title",
-      align: "right",
+      align: "right", // اینجا باید درست کار کنه
     },
   ];
 

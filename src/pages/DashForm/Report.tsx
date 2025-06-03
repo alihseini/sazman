@@ -22,22 +22,23 @@ const Report: React.FC = () => {
   const [descriptionLength, setDescriptionLength] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
 
+  // اصلاح شده: استفاده از آرایه به جای آبجکت برای ایندکس با عدد
+  const fieldsToValidate = [
+    [
+      "subject",
+      "organization",
+      "specialSubject",
+      "reportType",
+      "urgency",
+      "region",
+      "orgLevel",
+    ],
+    ["description", "attachment"],
+    ["captcha"],
+  ];
+
   const next = async () => {
     try {
-      const fieldsToValidate = {
-        0: [
-          "subject",
-          "organization",
-          "specialSubject",
-          "reportType",
-          "urgency",
-          "region",
-          "orgLevel",
-        ],
-        1: ["description", "attachment"],
-        2: ["captcha"],
-      };
-
       await form.validateFields(fieldsToValidate[currentStep]);
       setCurrentStep(currentStep + 1);
     } catch {
@@ -205,16 +206,18 @@ const Report: React.FC = () => {
           </>
         )}
         {currentStep === 2 && (
-          <Form.Item
-            label="کد امنیتی"
-            name="captcha"
-            rules={[{ required: true, message: "لطفا کد امنیتی را وارد کنید" }]}
-          >
+          <>
             <Captcha />
-            <div className="p-1 bg-gray-200 relative rounded-2xl w-full md:w-1/2">
-              <Input className="!border-none" />
-            </div>
-          </Form.Item>
+            <Form.Item
+              label="کد امنیتی"
+              name="captcha"
+              rules={[
+                { required: true, message: "لطفا کد امنیتی را وارد کنید" },
+              ]}
+            >
+              <Input placeholder="کد امنیتی را وارد کنید" />
+            </Form.Item>
+          </>
         )}
         <Form.Item className="mt-6">
           {currentStep > 0 && (

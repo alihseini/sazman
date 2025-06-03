@@ -4,13 +4,21 @@ const today = new Date().toLocaleDateString("fa-IR", {
   day: "numeric",
 });
 
-const getFormData = (user) => {
+interface User {
+  [key: string]: any;
+}
+
+const getFormData = (user: User) => {
   const formData = new FormData();
-  Object.entries(user).forEach(([key, value]) => {
-    if (value !== undefined && value !== null) {
+
+  for (const [key, value] of Object.entries(user)) {
+    if (typeof value === "string" || value instanceof Blob) {
       formData.append(key, value);
+    } else {
+      formData.append(key, JSON.stringify(value));
     }
-  });
+  }
+
   return formData;
 };
 
