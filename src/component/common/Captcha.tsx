@@ -4,7 +4,7 @@ import { getCaptcha } from "../../services/user";
 import { useQuery } from "@tanstack/react-query";
 
 const Captcha: React.FC = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["captcha"],
     queryFn: getCaptcha,
     refetchOnWindowFocus: false,
@@ -17,7 +17,7 @@ const Captcha: React.FC = () => {
         src={`data:image/png;base64,${data?.data?.dntCaptchaImage}`}
         alt="کپچا"
       />
-      <button className="hover:cursor-pointer" onClick={() => refetchCaptcha()}>
+      <button className="hover:cursor-pointer" onClick={() => refetch()}>
         <Icon icon="lucide:refresh-ccw" width="24" height="24" />
       </button>
     </div>
