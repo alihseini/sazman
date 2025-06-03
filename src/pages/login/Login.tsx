@@ -27,6 +27,7 @@ const Login: React.FC = () => {
         />
         <p className="mt-10 text-center text-lg">درگاه سامانه های یکپارچه</p>
         <p className="text-center text-base">سازمان بازرسی کل کشور</p>
+        <Link to={"/dashboard/guest"}>136.ir</Link>
       </div>
 
       <div className="flex-1 w-full lg:w-[55%] p-6">
