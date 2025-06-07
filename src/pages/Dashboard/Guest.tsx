@@ -79,7 +79,7 @@ const Guest: React.FC = () => {
       title: "عنوان",
       dataIndex: "title",
       key: "title",
-      align: "right", // اینجا باید درست کار کنه
+      align: "right",
     },
   ];
 
@@ -116,7 +116,16 @@ const Guest: React.FC = () => {
           <Row gutter={[16, 16]} justify="center">
             {filteredItems.map((item) => (
               <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
-                <Link to={item.link} className="block !text-black no-underline">
+                <Link
+                  to={item.show === "mobile" ? "#" : item.link}
+                  onClick={(e) => {
+                    if (item.show === "mobile") {
+                      e.preventDefault();
+                      window.location.href = "tel:136";
+                    }
+                  }}
+                  className="block !text-black no-underline"
+                >
                   <div
                     className={`w-full ${
                       viewMode === "compact" ? "h-28" : "h-48"
