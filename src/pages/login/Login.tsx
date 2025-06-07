@@ -17,7 +17,7 @@ const onFinishFailed = (errorInfo: any) => {
 
 const Login: React.FC = () => {
   return (
-    <div className="flex flex-col lg:flex-row h-160">
+    <div className="flex flex-col lg:flex-row h-200">
       <div className="hidden lg:flex text-[#00375c] w-full lg:w-[45%] flex-col items-center justify-center border-l border-dashed border-gray-300 p-6">
         <img
           src="https://136.bazresi.ir/dargah/assets/img/logo.e711fe7c.svg"
