@@ -72,7 +72,7 @@ const Report: React.FC = () => {
             <Form.Item
               name="subject"
               label="موضوع"
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: "لطفا موضوع را وارد کنید" }]}
             >
               <Select
                 placeholder="موضوع را انتخاب کنید"
@@ -82,7 +82,9 @@ const Report: React.FC = () => {
             <Form.Item
               name="organization"
               label="دستگاه اجرایی"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "لطفا دستگاه اجرایی را وارد کنید" },
+              ]}
             >
               <Select
                 placeholder="دستگاه اجرایی را انتخاب کنید"
@@ -92,7 +94,9 @@ const Report: React.FC = () => {
             <Form.Item
               name="specialSubject"
               label="موضوع تخصصی"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "لطفا موضوع تخصصی را وارد کنید" },
+              ]}
             >
               <Select
                 placeholder="موضوع تخصصی را انتخاب کنید"
@@ -102,7 +106,9 @@ const Report: React.FC = () => {
             <Form.Item
               name="reportType"
               label="نوع گزارش"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "لطفا نوع گزارش را وارد کنید" },
+              ]}
             >
               <Select
                 placeholder="نوع گزارش را انتخاب کنید"
@@ -112,7 +118,9 @@ const Report: React.FC = () => {
             <Form.Item
               name="urgency"
               label="فوریت رسیدگی"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "لطفا فوریت رسیدگی را وارد کنید" },
+              ]}
             >
               <Select
                 placeholder="فوریت را انتخاب کنید"
@@ -125,7 +133,12 @@ const Report: React.FC = () => {
             <Form.Item
               name="region"
               label="محدوده جغرافیایی"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "لطفا محدوده جغرافیایی را وارد کنید",
+                },
+              ]}
             >
               <Select
                 placeholder="محدوده جغرافیایی را انتخاب کنید"
@@ -135,7 +148,9 @@ const Report: React.FC = () => {
             <Form.Item
               name="orgLevel"
               label="سطح سازمانی"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "لطفا سطح سازمانی را وارد کنید" },
+              ]}
             >
               <Select
                 placeholder="سطح سازمانی را انتخاب کنید"
