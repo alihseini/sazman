@@ -15,12 +15,13 @@ const Captcha: React.FC = () => {
     queryFn: getCaptcha,
     refetchOnWindowFocus: false,
   });
+  console.log(data);
 
   if (isLoading) return <p>در حال بارگذاری کپچا...</p>;
   return (
     <div className="flex my-2 gap-2">
       <img
-        src={`data:image/png;base64,${data?.data?.dntCaptchaImage}`}
+        src={`data:image/png;base64,${data?.dntCaptchaImage}`}
         alt="کپچا"
       />
       <button className="hover:cursor-pointer" onClick={() => refetch()}>
