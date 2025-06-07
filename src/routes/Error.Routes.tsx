@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import ErrorLayout from "../layout/errorLayout";
+import Loader from "../component/common/Loader";
 
 const Error403 = lazy(() => import("../pages/error/Error403"));
 const Error404 = lazy(() => import("../pages/error/Error404"));
@@ -12,7 +13,7 @@ export const ErrorRoute = {
     {
       path: "/403",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Error403 />
         </Suspense>
       ),
@@ -20,7 +21,7 @@ export const ErrorRoute = {
     {
       path: "*",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Error404 />
         </Suspense>
       ),
@@ -28,7 +29,7 @@ export const ErrorRoute = {
     {
       path: "/500",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Error500 />
         </Suspense>
       ),

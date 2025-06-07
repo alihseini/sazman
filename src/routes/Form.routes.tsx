@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import FormLayout from "../layout/FormLayout";
+import Loader from "../component/common/Loader";
 
 const Login = lazy(() => import("../pages/login/Login"));
 const Register = lazy(() => import("../pages/login/Register"));
@@ -13,7 +14,7 @@ export const FormRoute = {
     {
       path: "/login",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Login />
         </Suspense>
       ),
@@ -21,7 +22,7 @@ export const FormRoute = {
     {
       path: "/register",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Register />
         </Suspense>
       ),
@@ -29,7 +30,7 @@ export const FormRoute = {
     {
       path: "/forgetpass",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <ForgetPass />
         </Suspense>
       ),

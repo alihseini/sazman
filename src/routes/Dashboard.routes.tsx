@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import DashboardLayout from "../layout/DashboardLayout";
 import { Navigate } from "react-router";
+import Loader from "../component/common/Loader";
 
 const Guest = lazy(() => import("../pages/Dashboard/Guest"));
 
@@ -15,7 +16,7 @@ export const DashboardRoute = {
     {
       path: "/dashboard/guest",
       element: (
-        <Suspense fallback={<p>...Loading</p>}>
+        <Suspense fallback={<Loader />}>
           <Guest />
         </Suspense>
       ),
