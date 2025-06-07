@@ -22,4 +22,20 @@ const getFormData = (user: User) => {
   return formData;
 };
 
-export { today, getFormData };
+const validateIranianNationalCode = (input: string): boolean => {
+  if (!/^\d{10}$/.test(input)) return false;
+
+  const check = +input[9];
+  const sum = input
+    .split("")
+    .slice(0, 9)
+    .reduce((acc, digit, i) => acc + +digit * (10 - i), 0);
+
+  const remainder = sum % 11;
+  return (
+    (remainder < 2 && check === remainder) ||
+    (remainder >= 2 && check === 11 - remainder)
+  );
+};
+
+export { today, getFormData, validateIranianNationalCode };

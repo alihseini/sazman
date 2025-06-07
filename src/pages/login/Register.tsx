@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button, Form, Input, DatePicker } from "antd";
 import React from "react";
 import { Link } from "react-router";
-import { getFormData } from "../../utils/helper";
+import { getFormData, validateIranianNationalCode } from "../../utils/helper";
 import Captcha from "../../component/common/Captcha";
 
 const onFinish = (values: any) => {
@@ -58,14 +58,29 @@ const Register: React.FC = () => {
 
           <Form.Item
             label="کد ملی"
-            name="nationalId"
-            rules={[{ required: true, message: "لطفا کد ملی را وارد کنید" }]}
+            name="UserName"
+            rules={[
+              { required: true, message: "لطفا کد ملی را وارد کنید" },
+              {
+                pattern: /^\d{10}$/,
+                message: "کد ملی باید دقیقا ۱۰ رقم عددی باشد",
+              },
+              {
+                validator: (_, value) => {
+                  if (!value) return Promise.resolve();
+                  const isValid = validateIranianNationalCode(value);
+                  return isValid
+                    ? Promise.resolve()
+                    : Promise.reject("کد ملی وارد شده معتبر نیست");
+                },
+              },
+            ]}
           >
             <div className="p-1 bg-white relative rounded-2xl">
-              <Input className="!border-none !pr-8" />
+              <Input maxLength={10} className="!border-none !pr-8" />
               <Icon
-                icon="mingcute:idcard-line"
-                className="absolute top-2 right-2 text-gray-400"
+                icon="mingcute:user-2-line"
+                className="!absolute !top-2 right-2 text-gray-400"
                 width="24"
                 height="24"
               />
