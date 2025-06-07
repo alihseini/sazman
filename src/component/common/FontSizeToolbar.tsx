@@ -1,4 +1,4 @@
-import  { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Slider, Popover } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
@@ -16,39 +16,62 @@ const FontSizeToolbar = () => {
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
   const widgetRef = useRef(null);
+  const [popoverVisible, setPopoverVisible] = useState(false);
 
   const [fontSize, setFontSize] = useState(16);
   const [fontWeight, setFontWeight] = useState(400);
 
+  // بارگذاری از localStorage فقط یک‌بار هنگام mount
   useEffect(() => {
-    document.body.style.setProperty("font-weight", fontWeight, "important");
-    return () => {
-      document.body.style.removeProperty("font-weight");
-    };
-  }, [fontWeight]);
+    const savedSize = localStorage.getItem("fontSize");
+    const savedWeight = localStorage.getItem("fontWeight");
 
+    if (savedSize) setFontSize(Number(savedSize));
+    if (savedWeight) setFontWeight(Number(savedWeight));
+  }, []);
+
+  // ذخیره در localStorage
   useEffect(() => {
-    document.body.style.setProperty("font-size", fontSize + "px", "important");
-
-    const widget = widgetRef.current;
-    const allElements = Array.from(document.body.querySelectorAll("*"));
-    allElements.forEach((el) => {
-      if (!widget || !widget.contains(el)) {
-        el.style.setProperty("font-size", fontSize + "px", "important");
-      }
-    });
-
-    return () => {
-      document.body.style.removeProperty("font-size");
-      allElements.forEach((el) => {
-        if (!widget || !widget.contains(el)) {
-          el.style.removeProperty("font-size");
-        }
-      });
-    };
+    localStorage.setItem("fontSize", fontSize.toString());
   }, [fontSize]);
 
-  const [popoverVisible, setPopoverVisible] = useState(false);
+  useEffect(() => {
+    localStorage.setItem("fontWeight", fontWeight.toString());
+  }, [fontWeight]);
+
+  // اعمال تغییرات به DOM پس از mount کامل
+  useEffect(() => {
+    const applyFontSettings = () => {
+      document.body.style.setProperty(
+        "font-size",
+        fontSize + "px",
+        "important"
+      );
+      document.body.style.setProperty("font-weight", fontWeight, "important");
+
+      const widget = widgetRef.current;
+      const allElements = Array.from(document.body.querySelectorAll("*"));
+      allElements.forEach((el) => {
+        if (!widget || !widget.contains(el)) {
+          el.style.setProperty("font-size", fontSize + "px", "important");
+          el.style.setProperty("font-weight", fontWeight + "", "important");
+        }
+      });
+
+      return () => {
+        document.body.style.removeProperty("font-size");
+        document.body.style.removeProperty("font-weight");
+        allElements.forEach((el) => {
+          if (!widget || !widget.contains(el)) {
+            el.style.removeProperty("font-size");
+            el.style.removeProperty("font-weight");
+          }
+        });
+      };
+    };
+
+    applyFontSettings();
+  }, [fontSize, fontWeight]);
 
   const onMouseDown = (e) => {
     if (popoverVisible) return;
