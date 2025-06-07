@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#00375c] fixed top-0 left-0 right-0 z-50">
+    <header className="bg-[#00375c] fixed top-0 left-0 right-0 z-500">
       <div className="max-w-[1100px] mx-auto flex items-center justify-between py-5 px-6 relative">
         <p className="hidden lg:block text-white font-semibold text-base whitespace-nowrap">
           درگاه سامانه‌های یکپارچه سازمان بازرسی کل کشور
